@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineShop.Core.Constants;
 using OnlineShop.Infrastructure.Data;
 using OnlineShop.ModelBinders;
+using OnlineShop.Infrastructure.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddControllersWithViews()
         options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider(FormatingConstant.NormalDateFormat));
         options.ModelBinderProviders.Insert(2, new DoubleModelBinderProvider());
     });
+builder.Services.AddScoped<IApplicatioDbRepository, ApplicatioDbRepository>();
 
 var app = builder.Build();
 
