@@ -30,6 +30,6 @@ namespace OnlineShop.Infrastructure.Data
         [Required]
         [StringLength(300)]
         public string Description { get; set; }
-     
+
     }
 }
