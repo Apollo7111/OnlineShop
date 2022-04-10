@@ -5,13 +5,14 @@ using OnlineShop.Infrastructure.Data;
 using OnlineShop.ModelBinders;
 using OnlineShop.Infrastructure.Data.Repositories;
 using OnlineShop.Extensions;
+using OnlineShop.Infrastructure.Data.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplicationDbContexts(builder.Configuration);
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
