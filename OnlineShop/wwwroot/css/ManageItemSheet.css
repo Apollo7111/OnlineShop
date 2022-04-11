@@ -1,0 +1,23 @@
+﻿table {
+   width: 100%;
+    border-collapse: collapse;
+}
+
+.cell-breakWord {
+    word-break: break-all;
+    max-width: 50px;
+}
+/*
+
+<table>
+   <tr>
+      <td style="width:75%">
+         Lorem ipsum dolor sit amet [...]
+      </td>
+      <td class="cell-breakWord">
+         Loremipsumdolorsitametconsectetur
+      </td>
+   </tr>
+</table>
+
+*/

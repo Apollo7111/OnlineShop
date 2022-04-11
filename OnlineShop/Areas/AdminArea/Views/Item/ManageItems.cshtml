@@ -1,0 +1,62 @@
+﻿@using OnlineShop.Core.Models
+@model IEnumerable<ItemListViewModel>
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/ManageItemSheet.css" asp-append-version="true" />
+</head>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Items
+                    <a asp-area="admin" asp-action="create" asp-controller="item"  class="btn btn-block  btn-success btn-lg">Create</a>
+                </h3>
+                @*<div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+
+            <div class="card-body table-responsive p-0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th> </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td class="cell-breakWord">@item.Category.Name</td>
+                                <td>@item.Price</td>
+                                <td class="cell-breakWord">@item.Description</td>
+                                <td> </td>
+                                <td>
+                                    <a asp-area="admin" asp-action="edit" asp-controller="item" asp-route-id="@item.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
+                                    <a asp-area="admin" asp-action="delete" asp-controller="item" asp-route-id="@item.Id" class="btn btn-block btn-outline-danger btn-xs">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

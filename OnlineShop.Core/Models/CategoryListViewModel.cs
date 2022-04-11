@@ -5,22 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Infrastructure.Data
+namespace OnlineShop.Core.Models
 {
-    public class Category
+    public class CategoryListViewModel
     {
-        [Key]
-        [StringLength(36)]
         public int Id { get; set; }
 
         [Required]
         [StringLength(20)]
+        [Display(Name = "Name")]
         public string Name { get; set; }
-
-/*        [Required]
-        [StringLength(10)]
-        public string Gender { get; set; }
-*/
-        public IList<Item> Items { get; set; } = new List<Item>();
     }
 }
