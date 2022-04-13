@@ -12,6 +12,9 @@ namespace OnlineShop.Core.Models
         public string Id { get; set; }
         public string Email { get; set; }
 
+        public string Username { get; set; }
+
         public ICollection<Item> Cart { get; set; }
+
     }
 }

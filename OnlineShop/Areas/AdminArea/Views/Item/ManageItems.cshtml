@@ -24,16 +24,16 @@
                 </div>*@
             </div>
 
-            <div class="card-body table-responsive p-0">
-                <table>
+            <div class="card table-responsive p-0">
+                  <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th width="10%">Image</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
                             <th>Description</th>
-                            <th> </th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -43,14 +43,14 @@
 
                             <tr>
                                 <td>@item.Id</td>
+                                <td ><img src="@item.ImageUrl" alt="" width="85%" height="85%" /></td>
                                 <td>@item.Name</td>
                                 <td class="cell-breakWord">@item.Category.Name</td>
-                                <td>@item.Price</td>
+                                <td>@item.Price$</td>
                                 <td class="cell-breakWord">@item.Description</td>
-                                <td> </td>
                                 <td>
                                     <a asp-area="admin" asp-action="edit" asp-controller="item" asp-route-id="@item.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
-                                    <a asp-area="admin" asp-action="delete" asp-controller="item" asp-route-id="@item.Id" class="btn btn-block btn-outline-danger btn-xs">Delete</a>
+                                    <a asp-area="admin" asp-action="delete" asp-controller="item" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete item with name @item.Name?')" class="btn btn-block btn-outline-danger btn-xs">Delete</a>
                                 </td>
                             </tr>
                         }

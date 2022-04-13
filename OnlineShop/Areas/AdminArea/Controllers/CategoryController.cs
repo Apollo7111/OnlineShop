@@ -23,13 +23,6 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             return View("Areas/AdminArea/Views/Category/ManageCategories.cshtml", category);
         }
 
-        /* [HttpPost]
-         public async Task<IActionResult> Create(ItemCreateViewModel model)
-         {
-              *//*await itemService.CreateItem(model);*//*
-             return View("/Areas/AdminArea/Views/Item/Create.cshtml",model);
-         }*/
-
         public async Task<IActionResult> Delete(int id)
         {
             await categoryService.DeleteCategory(id);
@@ -46,11 +39,12 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.Message = string.Format("There was an error trying to create category");
                 return View("/Areas/AdminArea/Views/Category/Create.cshtml", model);
             }
             await categoryService.CreateCategory(model);
+            ViewBag.Message = string.Format("Category with name {0} created successfully", model.Name);
             return View("/Areas/AdminArea/Views/Category/Create.cshtml", model);
-
         }
 
         public async Task<IActionResult> Edit(int id)

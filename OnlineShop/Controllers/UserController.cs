@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Core.Constants;
 using OnlineShop.Core.Contracts;
+using OnlineShop.Core.Models;
 
 namespace OnlineShop.Controllers
 {
@@ -22,5 +23,16 @@ namespace OnlineShop.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Cart()
+        {
+            var cart = await userService.GetUserCart();
+            return View("Views/User/Cart.cshtml",cart);
+        }
+
+      /*  public async Task<IActionResult> Add(int id)
+        {
+            await userService.Add(id);
+            return Ok(id);
+        }*/
     }
 }

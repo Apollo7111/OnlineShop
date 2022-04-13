@@ -34,6 +34,7 @@
     <div class="col-4">
         <form id="edit" method="post">
           <h2>Create Category</h2>
+          <a onclick="window.location.href='managecategories'" class="btn btn-block btn-warning btn-sm" >Back</a>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="form-label"></label>
@@ -47,6 +48,14 @@
                 </div>
                 <!-- /.col -->
             </div>
+            @if (ViewBag.Message != null)
+             {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+            </script>
+             }
         </form>
     </div>
 </div>

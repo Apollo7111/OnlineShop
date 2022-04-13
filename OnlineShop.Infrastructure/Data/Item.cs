@@ -21,6 +21,10 @@ namespace OnlineShop.Infrastructure.Data
         public Category Category { get; set; }
 
         [Required]
+        [StringLength(250)]
+        public string ImageUrl { get; set; }
+
+        [Required]
         [StringLength(80)]
         public string Name { get; set; }
 

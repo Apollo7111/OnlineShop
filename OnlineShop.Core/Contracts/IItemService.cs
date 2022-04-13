@@ -15,5 +15,7 @@ namespace OnlineShop.Core.Contracts
         Task<Item> DeleteItem(int id);
         Task<ItemEditViewModel> GetItemForEdit(int id);
         Task<bool> UpdateItem(ItemEditViewModel model);
+        Task<bool> AddToCart(int id);
+        Task<bool> RemoveItemFromCart(int id);
     }
 }

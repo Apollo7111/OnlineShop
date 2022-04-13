@@ -1,4 +1,6 @@
 ﻿using OnlineShop.Core.Models;
+using OnlineShop.Infrastructure.Data;
+using OnlineShop.Infrastructure.Data.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,7 @@ namespace OnlineShop.Core.Contracts
     public interface IUserService
     {
         Task<IEnumerable<UserListViewModel>> GetUsers();
+
+        Task<IEnumerable<UserListViewModel>> GetUserCart();
     }
 }

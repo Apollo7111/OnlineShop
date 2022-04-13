@@ -3,11 +3,45 @@
     border-collapse: collapse;
 }
 
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
 .cell-breakWord {
     word-break: break-all;
     max-width: 50px;
 }
-/*
+
+#customer {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #customer td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customer tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customer tr:hover {
+        background-color: #ddd;
+    }
+
+    #customer th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #04AA6D;
+        color: white;
+        /*
 
 <table>
    <tr>

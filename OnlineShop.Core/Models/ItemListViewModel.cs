@@ -17,6 +17,9 @@ namespace OnlineShop.Core.Models
         [StringLength(80)]
         public string Name { get; set; }
 
+        [StringLength(250)]
+        public string ImageUrl { get; set; }
+
         public decimal Price { get; set; }
 
         [StringLength(300)]

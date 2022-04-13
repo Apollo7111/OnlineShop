@@ -24,8 +24,8 @@
                 </div>*@
             </div>
 
-            <div class="card-body table-responsive p-0">
-                <table>
+            <div class="card table-responsive p-0">
+                  <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -42,13 +42,12 @@
                                 <td >@category.Name</td>
                                 <td>
                                     <a asp-area="admin" asp-action="edit" asp-controller="category" asp-route-id="@category.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
-                                    <a asp-area="admin" asp-action="delete" asp-controller="category" asp-route-id="@category.Id" class="btn btn-block btn-outline-danger btn-xs">Delete</a>
+                                    <a asp-area="admin" asp-action="delete" asp-controller="category" asp-route-id="@category.Id" onclick="return confirm('Are you sure you want to delete category with name @category.Name?')" class="btn btn-block btn-outline-danger btn-xs">Delete</a>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
 </div>

@@ -33,6 +33,7 @@
 <div class="row">
     <div class="col-4">
         <form id="edit" method="post">
+          <a onclick="window.location.href='manageitems'" class="btn btn-block btn-warning btn-sm" >Back</a>
           <h2>Create Item</h2>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -41,8 +42,13 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ImageUrl" class="form-label"></label>
+                <input asp-for="ImageUrl" class="form-control" aria-required="true" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="CategoryId" class="form-label"></label>
-                <input asp-for="CategoryId" class="form-control" aria-required="true"></input>
+                <input asp-for="CategoryId" class="form-control" aria-required="true" />
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">

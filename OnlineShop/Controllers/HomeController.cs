@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Core.Contracts;
 using OnlineShop.Models;
 using System.Diagnostics;
 
@@ -6,16 +7,24 @@ namespace OnlineShop.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IItemService itemService;
+
+        public HomeController(ILogger<HomeController> _logger, IItemService _itemService)
         {
-            _logger = logger;
+            logger = _logger;
+            itemService = _itemService;
         }
 
-        public IActionResult Index()
+        /*public  IActionResult Index()
         {
-            return View();
+            return Redirect("home/home");
+        }*/
+        public async Task<IActionResult> Index()
+        {
+            var item = await itemService.GetItems();
+            return View(item);
         }
 
         public IActionResult Privacy()
@@ -28,5 +37,12 @@ namespace OnlineShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       /* public async Task<IActionResult> Home()
+        {
+            var item = await itemService.GetItems();
+            return View(item);
+        }*/
+
     }
 }

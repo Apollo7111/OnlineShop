@@ -25,7 +25,7 @@
                         <tr>
                             <th>User</th>
                             <th>Email</th>
-                            <th>Cart</th>
+                            <th>Items in cart</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -35,7 +35,7 @@
                             <tr>
                                 <td>@user.Id</td>
                                 <td>@user.Email</td>
-                                <td>@user.Cart</td>
+                                <td>@user.Cart.Count</td>
                                 <td>
                                     <a asp-area="admin" asp-action="edit" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
                                     <a asp-area="admin" asp-action="roles" asp-controller="user" asp-route-id="@user.Id" class="btn btn-block btn-outline-warning btn-xs">Roles</a>

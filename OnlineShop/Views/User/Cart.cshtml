@@ -1,0 +1,64 @@
+﻿@using OnlineShop.Core.Models
+@model IEnumerable<UserListViewModel>
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/ManageItemSheet.css" asp-append-version="true" />
+</head>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Your cart</h2>
+                @*<div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>*@
+         @*   </div>*@
+
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap" id="customer">
+                    <thead>
+                        <tr>
+                            <th width="10%">Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            decimal itemSum = 0;
+                            foreach (var user in Model)
+                        {
+                            @foreach (var item in user.Cart)
+                            {
+                                itemSum += item.Price;
+                                <tr>
+                                     <td ><img src="@item.ImageUrl" alt="" width="85%" height="85%" /></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Price$</td>
+                                    <td>
+                                        <a asp-area="" asp-action="remove" asp-controller="item" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to remove @item.Name from your cart?')" class="btn btn-block btn-danger btn-xs">Remove</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                      @*  <div class="card-header"> *@
+                        <h4 class="card-title">Your total is: @itemSum$</h4>
+                        
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
