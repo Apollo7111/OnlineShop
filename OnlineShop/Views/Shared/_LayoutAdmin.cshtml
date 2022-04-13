@@ -12,25 +12,45 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineShop</a>
+                <a class="navbar-brand" asp-area="admin" asp-controller="Home" asp-action="Index">OnlineShop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    @*    <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="admin" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="admin" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
-                        @if (ViewContext.HttpContext.User.IsInRole("Administrator"))
-        {
-        <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="admin" asp-controller="Home" asp-action="index">Go to admin area</a>
-    </li>
-        }
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Go to user area</a>
+                        </li>
+                                </li>
+                                <li><div class="dropdown">
+                            <button class="dropbtn">User</button>
+                            <div class="dropdown-content">
+                                <a href="/admin/user/manageusers">Manage Users</a>
+                            </div>
+                            </div>
+                                </li>
+                        <li><div class="dropdown">
+                            <button class="dropbtn">Item</button>
+                            <div class="dropdown-content">
+                                <a href="/admin/item/manageitems">Manage Items</a>
+                                <a href="/admin/item/create">Create Item</a>
+                            </div>
+                            </div>
+                                </li>
+                    <li><div class="dropdown">
+                            <button class="dropbtn">Category</button>
+                            <div class="dropdown-content">
+                                <a href="/admin/category/managecategories">Manage Categories</a>
+                                <a href="/admin/category/create">Create Category</a>
+                            </div>
+                            </div>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
