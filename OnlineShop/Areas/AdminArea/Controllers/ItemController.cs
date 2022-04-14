@@ -68,15 +68,15 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             {
                 return View("/Areas/AdminArea/Views/Item/Edit.cshtml",model);
             }
-
-            if (await itemService.UpdateItem(model))
+            await itemService.UpdateItem(model);
+            /*if )
             {
-                ViewBag.Message =string.Format("Successfully edited item with Id: {0}", model.Id);
+              //  ViewBag.Message =string.Format("Successfully edited item with Id: {0}", model.Id);
             }
             else
             {
-                ViewBag.Message = string.Format("There was an error trying to eddit item with Id: {0}", model.Id);
-            }
+            //    ViewBag.Message = string.Format("There was an error trying to eddit item with Id: {0}", model.Id);
+            }*/
 
             return View("/Areas/AdminArea/Views/Item/Edit.cshtml",model);
         }

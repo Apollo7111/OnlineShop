@@ -14,6 +14,7 @@ namespace OnlineShop.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IOrderService, OrderService>();
             return services;
         }
         public static IServiceCollection AddApplicationDbContexts(this IServiceCollection services, IConfiguration config)

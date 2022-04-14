@@ -14,7 +14,7 @@ namespace OnlineShop.Core.Models
 
         public string Username { get; set; }
 
-        public ICollection<Item> Cart { get; set; }
+        public IList<Item> Cart { get; set; }
 
     }
 }

@@ -15,7 +15,7 @@ namespace OnlineShop.Core.Models
         public Category Category { get; set; }
 
         [StringLength(80)]
-        public string Name { get; set; }
+        public string Name { get; set; } 
 
         [StringLength(250)]
         public string ImageUrl { get; set; }

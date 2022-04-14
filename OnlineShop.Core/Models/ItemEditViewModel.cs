@@ -17,9 +17,9 @@ namespace OnlineShop.Core.Models
         public string? Name { get; set; }
 
         [Required]
-        [Display(Name = "IamgeUrl")]
+        [Display(Name = "ImageUrl")]
         [StringLength(250)]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         [Required]
         [Display(Name = "CategoryId")]

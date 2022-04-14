@@ -1,46 +1,42 @@
-﻿using OnlineShop.Infrastructure.Data.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using OnlineShop.Infrastructure.Data;
+using OnlineShop.Infrastructure.Data.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Infrastructure.Data
+namespace OnlineShop.Core.Models
 {
-    public class Order
+    public class OrderListViewModel
     {
-        [Key]
-        [StringLength(36)]
         public int Id { get; set; }
-        public string UserId { get; set; }
-
-        [ForeignKey(nameof(UserId))]
-        public ApplicationUser User { get; set; }
-
-        [Required]
         public DateTime Date { get; set; }
 
-        [Required]
+        public string UserId { get; set; } = " ";
+
         [StringLength(25)]
+        [Display(Name = "FirstName")]
         public string FirstName { get; set; }
 
-        [Required]
         [StringLength(25)]
+        [Display(Name = "LastName")]
         public string LastName { get; set; }
 
-        [Required]
+        [Display(Name = "PhoneNumber")]
         public int PhoneNumber { get; set; }
 
-        [Required]
         [StringLength(70)]
+        [Display(Name = "Address")]
         public string Address { get; set; }
 
         [StringLength(200)]
+        [Display(Name = "AdditionalInformation")]
         public string AdditionalInformation { get; set; }
 
-        public IList<Item> Cart { get; set; }
-
+        public IList<Item> Cart { get; set; } = new List<Item>();
     }
 }

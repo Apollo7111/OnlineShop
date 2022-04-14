@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Core", "OnlineSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Infrastructure", "OnlineShop.Infrastructure\OnlineShop.Infrastructure.csproj", "{BF682302-0790-45FE-A187-C8F1E5131A63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Api", "OnlineShop.Api\OnlineShop.Api.csproj", "{48C0190D-4833-4394-9114-C9A7FF2BD2D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Api", "OnlineShop.Api\OnlineShop.Api.csproj", "{48C0190D-4833-4394-9114-C9A7FF2BD2D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,13 +20,13 @@ namespace OnlineShop.Controllers
         {
             await itemService.AddToCart(id);
 
-            return Ok(id);
+            return Redirect("/");
         }
         public async Task<IActionResult> Remove(int id)
         {
             await itemService.RemoveItemFromCart(id);
 
-            return Ok(id);
+            return Redirect("/user/cart");
         }
 
     }

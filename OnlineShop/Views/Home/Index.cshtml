@@ -33,7 +33,7 @@
                                 <td ><img src="@item.ImageUrl" alt="" width="85%" height="85%" /></td>
                                 <td class="cell-breakWord">@item.Category.Name</td>
                                 <td>@item.Price$</td>
-                                <td class="cell-breakWord">@item.Description</td>
+                                <td width="35%"  class="cell-breakWord">@item.Description</td>
                                 <td>
                                     <a asp-area="" asp-action="add" asp-controller="item" asp-route-id="@item.Id" class="btn btn-block btn-success btn-xs">Add to cart</a>
                             </tr>

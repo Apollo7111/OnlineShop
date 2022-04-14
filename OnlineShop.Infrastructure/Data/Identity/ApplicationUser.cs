@@ -11,6 +11,6 @@ namespace OnlineShop.Infrastructure.Data.Identity
 {
     public class ApplicationUser : IdentityUser
     {
-        public ICollection<Item> Cart { get; set; } = new List<Item>();
+        public IList<Item> Cart { get; set; } = new List<Item>();
     }
 }

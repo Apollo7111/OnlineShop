@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using OnlineShop.Core.Contracts;
 using OnlineShop.Core.Models;
 using OnlineShop.Infrastructure.Data;
@@ -7,6 +8,7 @@ using OnlineShop.Infrastructure.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,10 +17,13 @@ namespace OnlineShop.Core.Services
     public class ItemService : IItemService
     {
         private readonly IApplicatioDbRepository repo;
-        public ItemService(IApplicatioDbRepository _repo)
+        string userId = null;
+        public ItemService(IApplicatioDbRepository _repo, IHttpContextAccessor httpContextAccessor)
         {
             repo = _repo;
+            userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
+
 
         public async Task<bool> CreateItem(ItemCreateViewModel model)
         {
@@ -35,6 +40,7 @@ namespace OnlineShop.Core.Services
             item.CategoryId = model.CategoryId;
             item.Price = model.Price;
             item.Description = model.Description;
+            item.ImageUrl = model.ImageUrl;
             try
             {
                await repo.AddAsync(item);
@@ -64,6 +70,7 @@ namespace OnlineShop.Core.Services
             {
                 Id = item.Id,
                 Name = item.Name,
+                ImageUrl = item.ImageUrl,
                 CategoryId = item.CategoryId,
                 Price = item.Price,
                 Description = item.Description,
@@ -75,13 +82,16 @@ namespace OnlineShop.Core.Services
                 .Select(x => new ItemListViewModel()
                 {
                     Id = x.Id,
-                    Category = x.Category,
                     Name = x.Name,
+                    ImageUrl = x.ImageUrl,
+                    Category = x.Category,
                     Price = x.Price,
                     Description = x.Description,
                 })
                 .ToListAsync();
         }
+
+        
 
         public async Task<bool> UpdateItem(ItemEditViewModel model)
         {
@@ -91,6 +101,7 @@ namespace OnlineShop.Core.Services
             if (item != null)
             {
                 item.Name = model.Name;
+                item.ImageUrl = model.ImageUrl;
                 item.CategoryId = model.CategoryId;
                 item.Price = model.Price;
                 item.Description = model.Description;
@@ -101,5 +112,38 @@ namespace OnlineShop.Core.Services
 
             return result;
         }
+        public async Task<bool> AddToCart(int id)
+        {
+            var result = false;
+            var item = await repo.GetByIdAsync<Item>(id);
+            var user = await repo.GetByIdAsync<ApplicationUser>(userId);
+            if (item != null && user != null)
+            {
+                user.Email = "nasko@mail.bg";
+                user.Cart.Add(item);
+             //   repo.Update(user);
+                await repo.SaveChangesAsync();
+                result=true;
+            }
+            return result;
+        }
+        
+        public async Task<bool> RemoveItemFromCart(int id)
+        {
+            var result = false;
+            var item = await repo.GetByIdAsync<Item>(id);
+            var user = await repo.GetByIdAsync<ApplicationUser>(userId);
+            if (item != null && user != null)
+            {
+                user.Cart.Remove(item);
+                repo.Update(user);
+                await repo.SaveChangesAsync();
+                user.Cart.Count();
+                user.Email.ToString();
+                result = true;
+            }
+            return result;
+        }
+
     }
     }
