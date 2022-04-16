@@ -14,6 +14,6 @@ namespace OnlineShop.Core.Contracts
         Task<IEnumerable<UserListViewModel>> GetUsers();
 
         Task<IEnumerable<UserListViewModel>> GetUserCart();
-        Task<bool> CreateOrder(OrderListViewModel model);
+        Task<bool> CreateOrder(OrderCreateViewModel model);
     }
 }

@@ -9,7 +9,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title">Your cart</h2>
+                <h2 style="text-align:center;" class="card-title">Your cart
+                </h2>
+                <h10>
+                    <a asp-area="" asp-action="order" asp-controller="user"  class="btn btn-block  btn-success btn-lg">Purchase</a>
+                </h10>
                 @*<div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -52,7 +56,6 @@
                                 </tr>
                             }
                         }
-                      @*  <div class="card-header"> *@
                         <h4 class="card-title">Your total is: @itemSum$</h4>
                         
                         }

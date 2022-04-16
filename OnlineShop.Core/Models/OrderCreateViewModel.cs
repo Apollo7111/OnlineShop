@@ -1,22 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
-using OnlineShop.Infrastructure.Data;
-using OnlineShop.Infrastructure.Data.Identity;
+﻿using OnlineShop.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineShop.Core.Models
 {
-    public class OrderListViewModel
+    public class OrderCreateViewModel
     {
-        public int Id { get; set; }
         public DateTime Date { get; set; }
 
-        public string UserId { get; set; } = " ";
+        public int UserId { get; set; }
 
         [StringLength(25)]
         [Display(Name = "FirstName")]

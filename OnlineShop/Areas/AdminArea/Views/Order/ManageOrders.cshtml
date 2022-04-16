@@ -1,0 +1,63 @@
+﻿@using OnlineShop.Core.Models
+@model IEnumerable<OrderListViewModel>
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/ManageItemSheet.css" asp-append-version="true" />
+</head>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Orders
+                </h3>
+                @*<div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+
+            <div class="card table-responsive p-0">
+                  <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>PhoneNumber</th>
+                            <th>Address</th>
+                            <th>AdditionalInformation</th>
+                            <th>Cart</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+
+                            <tr>
+                                <td>@order.Id</td>
+                                <td >@order.FirstName</td>
+                                <td>@order.LastName</td>
+                                <td>@order.PhoneNumber</td>
+                                <td>@order.Address</td>
+                                <td class="cell-breakWord">@order.AdditionalInformation</td>
+                                <td>@order.Cart.Count()</td>
+                                <td>
+                                    <a asp-area="admin" asp-action="view" asp-controller="order" asp-route-id="@order.Id" class="btn btn-block btn-outline-warning btn-xs">View</a>
+                                    <a asp-area="admin" asp-action="delete" asp-controller="order" asp-route-id="@order.Id" onclick="return confirm('Are you sure you want to remove the order of Mr.@order.LastName ')" class="btn btn-block btn-outline-danger btn-xs">Remove</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

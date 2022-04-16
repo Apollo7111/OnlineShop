@@ -10,5 +10,7 @@ namespace OnlineShop.Core.Contracts
     public interface IOrderService
     {
         Task<IEnumerable<OrderListViewModel>> GetOrders();
+        Task DeleteOrder(int id);
+        Task<IEnumerable<OrderListViewModel>> ViewOrder(int id);
     }
 }

@@ -43,6 +43,7 @@ namespace OnlineShop.Core.Services
         {
              return await repo.All<ApplicationUser>()
                  .Where(x => x.Id == userId)
+                 .Include(x => x.Cart)
                  .Select(x => new UserListViewModel()
                  {
                      Id = x.Id,
@@ -52,14 +53,20 @@ namespace OnlineShop.Core.Services
                  .ToListAsync();
         }
 
-        public async Task<bool> CreateOrder(OrderListViewModel model)
+        public async Task<bool> CreateOrder(OrderCreateViewModel model)
         {
-            var currUser = await repo.GetByIdAsync<ApplicationUser>(userId);
+            var currUser = repo.All<ApplicationUser>()
+               .Where(u => u.Id == userId)
+               .Include(u => u.Cart)
+               .FirstOrDefault();
             bool result = false;
+            if(currUser.Cart == null)
+            {
+                return result;
+            }
             var order = new Order()
             {
-            Id = model.Id,
-            FirstName = currUser.Email,
+            FirstName = model.FirstName,
             LastName = model.LastName,
             PhoneNumber = model.PhoneNumber,
             Address = model.Address,
@@ -68,19 +75,10 @@ namespace OnlineShop.Core.Services
             UserId = userId,
             Cart = currUser.Cart
         };
-            /*order.Id = model.Id;
-            order.FirstName = currUser.Email;
-            order.LastName = model.LastName;
-            order.PhoneNumber = model.PhoneNumber;
-            order.Address = model.Address;
-            order.AdditionalInformation = model.AdditionalInformation;
-            order.Date = DateTime.Now;
-            order.UserId = userId;
-            currUser.Cart.DefaultIfEmpty();*/
             try
             {
                 await repo.AddAsync(order);
-                repo.SaveChanges();
+                await repo.SaveChangesAsync();
                 result = true;
             }
             catch (Exception)

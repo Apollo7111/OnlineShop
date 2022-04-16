@@ -14,3 +14,4 @@ namespace OnlineShop.Infrastructure.Data.Identity
         public IList<Item> Cart { get; set; } = new List<Item>();
     }
 }
+

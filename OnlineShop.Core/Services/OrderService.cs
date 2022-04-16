@@ -29,6 +29,39 @@ namespace OnlineShop.Core.Services
                     PhoneNumber = x.PhoneNumber,
                     Address = x.Address,
                     AdditionalInformation = x.AdditionalInformation,
+                    Cart = x.Cart,
+                })
+                .ToListAsync();
+        }
+
+        public async Task DeleteOrder(int id)
+        {
+            var order = repo.All<Order>()
+                .Where(x=>x.Id==id)
+                .Include(x=>x.Cart)
+                .FirstOrDefault();
+            order = null;
+           await repo.DeleteAsync<Order>(id);
+           await repo.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<OrderListViewModel>> ViewOrder(int id)
+        {
+            return await repo.All<Order>()
+                .Where(x => x.Id == id)
+                .Include(x => x.Cart)
+                .Select(x => new OrderListViewModel()
+                {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                PhoneNumber = x.PhoneNumber,
+                Address = x.Address,
+                AdditionalInformation = x.AdditionalInformation,
+                Date = x.Date,
+                UserId = x.UserId,
+                Cart = x.Cart,
+
                 })
                 .ToListAsync();
         }

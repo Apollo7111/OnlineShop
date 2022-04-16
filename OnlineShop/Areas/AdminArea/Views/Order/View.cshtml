@@ -1,0 +1,77 @@
+﻿@using OnlineShop.Core.Models
+@model IEnumerable<OrderListViewModel>
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/ManageItemSheet.css" asp-append-version="true" />
+</head>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Order № @foreach(var order in Model)
+                    {
+                        @order.Id;
+                    }
+                </h3>
+            </div>
+
+            <div class="card table-responsive p-0">
+                  <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>PhoneNumber</th>
+                            <th>Address</th>
+                            <th>AdditionalInformation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td>@order.Id</td>
+                                <td>@order.FirstName</td>
+                                <td>@order.LastName</td>
+                                <td>@order.PhoneNumber</td>
+                                <td>@order.Address</td>
+                                <td class="cell-breakWord">@order.AdditionalInformation</td>
+                            </tr>
+                            <table class="table table-hover" id="customer">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th width="10%">Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                            decimal itemSum = 0;
+                                    @foreach (var item in order.Cart)
+                                    {
+                                            itemSum += item.Price;
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td ><img src="@item.ImageUrl" alt="" width="85%" height="85%" /></td>
+                                            <td>@item.Name</td>
+                                            <td>@item.Price$</td>
+                                            <td class="cell-breakWord">@item.Description</td>
+                                        </tr>
+                                        }
+                                        <h4 class="card-title">Total sum is: @itemSum$</h4>
+                                        }
+                                        </tbody>
+                                        </table>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

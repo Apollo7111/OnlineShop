@@ -14,7 +14,7 @@ namespace OnlineShop.Infrastructure.Data
         [Key]
         [StringLength(36)]
         public int Id { get; set; }
-        public string UserId { get; set; }
+       public string UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; }
@@ -31,7 +31,9 @@ namespace OnlineShop.Infrastructure.Data
         public string LastName { get; set; }
 
         [Required]
-        public int PhoneNumber { get; set; }
+        [StringLength(20)]
+        [Phone]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(70)]
