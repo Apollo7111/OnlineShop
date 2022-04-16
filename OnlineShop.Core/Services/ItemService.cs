@@ -24,7 +24,16 @@ namespace OnlineShop.Core.Services
             userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
 
+        public async Task<ItemCreateViewModel> GetCategories()
+        {
+            var categories = repo.All<Category>()
+                .ToList();
+            return new ItemCreateViewModel()
+            {
+                Categories = categories
+            };
 
+        }
         public async Task<bool> CreateItem(ItemCreateViewModel model)
         {
             bool result = false;
@@ -65,7 +74,9 @@ namespace OnlineShop.Core.Services
         public async Task<ItemEditViewModel> GetItemForEdit(int id)
         {
             var item = await repo.GetByIdAsync<Item>(id);
-
+            var categories = repo.All<Category>()
+                .ToList();
+            categories.ToList();
             return new ItemEditViewModel()
             {
                 Id = item.Id,
@@ -74,6 +85,7 @@ namespace OnlineShop.Core.Services
                 CategoryId = item.CategoryId,
                 Price = item.Price,
                 Description = item.Description,
+                Categories = categories
             };
         }
         public async Task<IEnumerable<ItemListViewModel>> GetItems()
@@ -115,14 +127,18 @@ namespace OnlineShop.Core.Services
         public async Task<bool> AddToCart(int id)
         {
             var result = false;
-            var item = await repo.GetByIdAsync<Item>(id);
-            var user = await repo.GetByIdAsync<ApplicationUser>(userId);
+            var user = repo.All<ApplicationUser>()
+               .Where(u => u.Id == userId)
+             //  .Include(u => u.Cart)
+               .FirstOrDefault();
+            var item = repo.All<Item>()
+               .Where(u => u.Id == id)
+               .FirstOrDefault();
             if (item != null && user != null)
             {
-                user.Email = "nasko@mail.bg";
                 user.Cart.Add(item);
              //   repo.Update(user);
-                await repo.SaveChangesAsync();
+                 await repo.SaveChangesAsync();
                 result=true;
             }
             return result;
@@ -131,15 +147,22 @@ namespace OnlineShop.Core.Services
         public async Task<bool> RemoveItemFromCart(int id)
         {
             var result = false;
-            var item = await repo.GetByIdAsync<Item>(id);
-            var user = await repo.GetByIdAsync<ApplicationUser>(userId);
+            /* var item = await repo.GetByIdAsync<Item>(id);
+             var user = await repo.GetByIdAsync<ApplicationUser>(userId);*/
+            var user = repo.All<ApplicationUser>()
+                .Where(u => u.Id == userId)
+            //    .Include(u => u.Cart)
+                .FirstOrDefault();
+            var item = repo.All<Item>()
+               .Where(u => u.Id == id)
+               .FirstOrDefault();
             if (item != null && user != null)
             {
                 user.Cart.Remove(item);
-                repo.Update(user);
-                await repo.SaveChangesAsync();
-                user.Cart.Count();
-                user.Email.ToString();
+            //    repo.Update(user);
+                 await repo.SaveChangesAsync();
+            //    user.Cart.Count();
+        //        user.Email.ToString();
                 result = true;
             }
             return result;

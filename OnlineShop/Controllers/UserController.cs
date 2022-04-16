@@ -36,7 +36,7 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Order(OrderListViewModel model)
+        public async Task<IActionResult> Order(OrderCreateViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -44,7 +44,6 @@ namespace OnlineShop.Controllers
                 return Ok(model);
             }
             await userService.CreateOrder(model);
-
             return View("/Views/User/Order.cshtml", model);
         }
 

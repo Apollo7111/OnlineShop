@@ -21,6 +21,6 @@ namespace OnlineShop.Infrastructure.Data
         [StringLength(10)]
         public string Gender { get; set; }
 */
-        public IList<Item> Items { get; set; } = new List<Item>();
+       public List<Item> Items { get; set; } = new List<Item>();
     }
 }

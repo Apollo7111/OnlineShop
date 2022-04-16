@@ -38,7 +38,8 @@ namespace OnlineShop.Areas.AdminArea.Controllers
 
         public async Task<IActionResult> Create()
         {
-            return View("/Areas/AdminArea/Views/Item/Create.cshtml");
+           var category = await itemService.GetCategories();
+            return View("/Areas/AdminArea/Views/Item/Create.cshtml", category);
         }
 
         [HttpPost]
@@ -46,11 +47,12 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("/Areas/AdminArea/Views/Item/Create.cshtml", model);
+                // return View("/Areas/AdminArea/Views/Item/Create.cshtml", model);
+                return Redirect("/admin/item/manageitems");
             }
             await itemService.CreateItem(model);
 
-            return View("/Areas/AdminArea/Views/Item/Create.cshtml",model);
+            return Redirect("/admin/item/manageitems");
 
         }
 
@@ -66,7 +68,8 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("/Areas/AdminArea/Views/Item/Edit.cshtml",model);
+                // return View("/Areas/AdminArea/Views/Item/Edit.cshtml",model);
+                return Redirect("/admin/item/manageitems");
             }
             await itemService.UpdateItem(model);
             /*if )
@@ -78,7 +81,7 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             //    ViewBag.Message = string.Format("There was an error trying to eddit item with Id: {0}", model.Id);
             }*/
 
-            return View("/Areas/AdminArea/Views/Item/Edit.cshtml",model);
+            return Redirect("/admin/item/manageitems");
         }
     }
 }

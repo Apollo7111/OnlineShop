@@ -28,7 +28,6 @@
                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Go to user area</a>
                         </li>
-                                </li>
                                 <li><div class="dropdown">
                             <button class="dropbtn">User</button>
                             <div class="dropdown-content">
@@ -51,8 +50,17 @@
                                 <a href="/admin/category/create">Create Category</a>
                             </div>
                             </div>
+                            </li>
+                            <li><div class="dropdown">
+                            <button class="dropbtn">Order</button>
+                            <div class="dropdown-content">
+                                <a href="/admin/order/manageorders">Manage Orders</a>
+                            </div>
+                            </div>
+                            </li>
+
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartialAdmin" />
                 </div>
             </div>
         </nav>

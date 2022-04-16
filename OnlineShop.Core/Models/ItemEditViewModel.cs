@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineShop.Infrastructure.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace OnlineShop.Core.Models
         [Display(Name = "ImageUrl")]
         [StringLength(250)]
         public string? ImageUrl { get; set; }
+
+        public List<Category> Categories { get; set; } = new List<Category>();
 
         [Required]
         [Display(Name = "CategoryId")]
