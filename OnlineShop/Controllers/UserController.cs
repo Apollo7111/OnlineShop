@@ -40,18 +40,24 @@ namespace OnlineShop.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //return View("/Views/User/Order.cshtml", model);
                 return Ok(model);
             }
             await userService.CreateOrder(model);
             return View("/Views/User/Order.cshtml", model);
         }
 
-
-        /*  public async Task<IActionResult> Add(int id)
-          {
-              await userService.Add(id);
-              return Ok(id);
-          }*/
+        // The admin should be added through the database
+        public async Task<IActionResult> CreateRole()
+        {
+            await roleManager.CreateAsync(new IdentityRole()
+            {
+                Name = "User"
+            });
+            await roleManager.CreateAsync(new IdentityRole()
+            {
+                Name = "Administrator"
+            });
+            return Ok();
+        }
     }
 }

@@ -16,11 +16,6 @@ namespace OnlineShop.Controllers
             logger = _logger;
             itemService = _itemService;
         }
-
-        /*public  IActionResult Index()
-        {
-            return Redirect("home/home");
-        }*/
         public async Task<IActionResult> Index()
         {
             var item = await itemService.GetItems();
@@ -37,12 +32,6 @@ namespace OnlineShop.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-       /* public async Task<IActionResult> Home()
-        {
-            var item = await itemService.GetItems();
-            return View(item);
-        }*/
 
     }
 }

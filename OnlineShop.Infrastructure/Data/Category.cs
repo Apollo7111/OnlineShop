@@ -16,11 +16,6 @@ namespace OnlineShop.Infrastructure.Data
         [Required]
         [StringLength(20)]
         public string Name { get; set; }
-
-/*        [Required]
-        [StringLength(10)]
-        public string Gender { get; set; }
-*/
        public List<Item> Items { get; set; } = new List<Item>();
     }
 }

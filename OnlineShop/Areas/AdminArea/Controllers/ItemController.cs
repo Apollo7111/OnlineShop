@@ -23,13 +23,6 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             return View("Areas/AdminArea/Views/Item/ManageItems.cshtml", item);
         }
 
-       /* [HttpPost]
-        public async Task<IActionResult> Create(ItemCreateViewModel model)
-        {
-             *//*await itemService.CreateItem(model);*//*
-            return View("/Areas/AdminArea/Views/Item/Create.cshtml",model);
-        }*/
-
         public async Task<IActionResult> Delete(int id)
         {
             await itemService.DeleteItem(id);
@@ -47,7 +40,6 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // return View("/Areas/AdminArea/Views/Item/Create.cshtml", model);
                 return Redirect("/admin/item/manageitems");
             }
             await itemService.CreateItem(model);
@@ -68,19 +60,9 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // return View("/Areas/AdminArea/Views/Item/Edit.cshtml",model);
                 return Redirect("/admin/item/manageitems");
             }
             await itemService.UpdateItem(model);
-            /*if )
-            {
-              //  ViewBag.Message =string.Format("Successfully edited item with Id: {0}", model.Id);
-            }
-            else
-            {
-            //    ViewBag.Message = string.Format("There was an error trying to eddit item with Id: {0}", model.Id);
-            }*/
-
             return Redirect("/admin/item/manageitems");
         }
     }

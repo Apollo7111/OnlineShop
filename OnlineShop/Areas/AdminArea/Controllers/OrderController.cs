@@ -21,7 +21,6 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             var order = await orderService.GetOrders();
 
             return View("Areas/AdminArea/Views/Order/ManageOrders.cshtml", order);
-            //return Ok(order);
         }
 
         public async Task<IActionResult> Delete(int id)
@@ -34,7 +33,6 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             var order = await orderService.ViewOrder(id);
             return View("Areas/AdminArea/Views/Order/View.cshtml", order);
-           // return Ok(order);
         }
     }
 }

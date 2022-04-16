@@ -21,10 +21,6 @@
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @*@foreach (var category in Model.Categories)
-                {
-                    @category.Name;
-                }*@
                 <label asp-for="CategoryId" class="form-label">Category</label>
                 <select asp-for="CategoryId" class="form-control" aria-required="true" >
                     @foreach(var category in Model.Categories)

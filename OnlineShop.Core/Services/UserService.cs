@@ -79,6 +79,9 @@ namespace OnlineShop.Core.Services
             {
                 await repo.AddAsync(order);
                 await repo.SaveChangesAsync();
+                currUser.Cart = null;
+                currUser.Cart = new List<Item>();
+                await repo.SaveChangesAsync();
                 result = true;
             }
             catch (Exception)

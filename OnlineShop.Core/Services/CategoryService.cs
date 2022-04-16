@@ -25,10 +25,6 @@ namespace OnlineShop.Core.Services
             decimal price = 0;
             var category = new Category()
             {
-                /* Name = model.Name,
-                 Price = price,
-                 Description = "20 incha",
-                 CategoryId = 1*/
             };
             category.Name = model.Name;
             try

@@ -27,22 +27,5 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             return View("Areas/AdminArea/Views/User/ManageUsers.cshtml", users);
         }
 
-        public async Task<IActionResult> Roles(string id)
-        {
-            return Ok(id);
-        }
-        public async Task<IActionResult> Edit(string id)
-        {
-            return Ok(id);
-        }
-
-        public async Task<IActionResult> CreateRole()
-        {
-            /*  await roleManager.CreateAsync(new IdentityRole()
-              {
-                  Name = "Administrator"
-              });*/
-            return Ok();
-        }
     }
 }

@@ -37,13 +37,8 @@ namespace OnlineShop.Core.Services
         public async Task<bool> CreateItem(ItemCreateViewModel model)
         {
             bool result = false;
-            decimal price = 0;
             var item = new Item()
             {
-               /* Name = model.Name,
-                Price = price,
-                Description = "20 incha",
-                CategoryId = 1*/
             };
             item.Name = model.Name;
             item.CategoryId = model.CategoryId;
@@ -129,7 +124,6 @@ namespace OnlineShop.Core.Services
             var result = false;
             var user = repo.All<ApplicationUser>()
                .Where(u => u.Id == userId)
-             //  .Include(u => u.Cart)
                .FirstOrDefault();
             var item = repo.All<Item>()
                .Where(u => u.Id == id)
@@ -137,7 +131,6 @@ namespace OnlineShop.Core.Services
             if (item != null && user != null)
             {
                 user.Cart.Add(item);
-             //   repo.Update(user);
                  await repo.SaveChangesAsync();
                 result=true;
             }
@@ -147,11 +140,8 @@ namespace OnlineShop.Core.Services
         public async Task<bool> RemoveItemFromCart(int id)
         {
             var result = false;
-            /* var item = await repo.GetByIdAsync<Item>(id);
-             var user = await repo.GetByIdAsync<ApplicationUser>(userId);*/
             var user = repo.All<ApplicationUser>()
                 .Where(u => u.Id == userId)
-            //    .Include(u => u.Cart)
                 .FirstOrDefault();
             var item = repo.All<Item>()
                .Where(u => u.Id == id)
@@ -159,10 +149,7 @@ namespace OnlineShop.Core.Services
             if (item != null && user != null)
             {
                 user.Cart.Remove(item);
-            //    repo.Update(user);
                  await repo.SaveChangesAsync();
-            //    user.Cart.Count();
-        //        user.Email.ToString();
                 result = true;
             }
             return result;
