@@ -22,7 +22,6 @@ namespace OnlineShop.Core.Services
         public async Task<bool> CreateCategory(CategoryListViewModel model)
         {
             bool result = false;
-            decimal price = 0;
             var category = new Category()
             {
             };
