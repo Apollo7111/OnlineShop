@@ -14,6 +14,14 @@
                 </h3>
             </div>
 
+            @using (Html.BeginForm())  
+            {  
+                <p>  
+                    Find Category by Name: @Html.TextBox("SearchString")  
+                    <input type="submit" value="Search" />  
+                </p>  
+            }
+
             <div class="card table-responsive p-0">
                   <table class="table table-hover text-nowrap">
                     <thead>

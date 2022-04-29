@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Api", "OnlineShop.Api\OnlineShop.Api.csproj", "{48C0190D-4833-4394-9114-C9A7FF2BD2D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Test", "OnlineShop.Test\OnlineShop.Test.csproj", "{EE4A3AF6-D089-46C6-BC0E-844C49B638A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Test", "OnlineShop.Test\OnlineShop.Test.csproj", "{EE4A3AF6-D089-46C6-BC0E-844C49B638A3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C41C6F32-70DB-4A97-AFD7-851DF51F15D1} = {C41C6F32-70DB-4A97-AFD7-851DF51F15D1}
 	EndProjectSection

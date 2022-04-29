@@ -16,10 +16,15 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             return Redirect("/admin/category/managecategories");
         }
-        public async Task<IActionResult> ManageCategories()
+        public async Task<IActionResult> ManageCategories(string SearchString)
         {
             var category = await categoryService.GetCategories();
-            
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                category = category.Where(s => s.Name.Contains(SearchString)).ToList();
+            }
+
             return View("Areas/AdminArea/Views/Category/ManageCategories.cshtml", category);
         }
 

@@ -16,9 +16,13 @@ namespace OnlineShop.Controllers
             logger = _logger;
             itemService = _itemService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchString)
         {
             var item = await itemService.GetItems();
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                item = item.Where(s => s.Name.Contains(SearchString)).ToList();
+            }
             return View(item);
         }
 

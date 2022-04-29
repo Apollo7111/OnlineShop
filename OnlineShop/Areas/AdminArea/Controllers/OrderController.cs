@@ -16,9 +16,14 @@ namespace OnlineShop.Areas.AdminArea.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ManageOrders()
+        public async Task<IActionResult> ManageOrders(string SearchString)
         {
             var order = await orderService.GetOrders();
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                order = order.Where(s => s.FirstName.Contains(SearchString)).ToList();
+            }
 
             return View("Areas/AdminArea/Views/Order/ManageOrders.cshtml", order);
         }

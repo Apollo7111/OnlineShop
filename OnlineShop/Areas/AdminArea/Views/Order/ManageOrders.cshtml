@@ -13,6 +13,14 @@
                 </h3>
             </div>
 
+            @using (Html.BeginForm())  
+            {  
+                <p>  
+                    Find Order by FirstName: @Html.TextBox("SearchString")  
+                    <input type="submit" value="Search" />  
+                </p>  
+            }
+
             <div class="card table-responsive p-0">
                   <table class="table table-hover">
                     <thead>

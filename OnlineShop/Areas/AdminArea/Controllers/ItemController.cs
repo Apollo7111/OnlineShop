@@ -16,9 +16,13 @@ namespace OnlineShop.Areas.AdminArea.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> ManageItems()
+        public async Task<IActionResult> ManageItems(string SearchString)
         {
             var item = await itemService.GetItems();
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                item = item.Where(s => s.Name.Contains(SearchString)).ToList();
+            }
 
             return View("Areas/AdminArea/Views/Item/ManageItems.cshtml", item);
         }

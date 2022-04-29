@@ -35,19 +35,6 @@ namespace OnlineShop.Test
             };
             await repo.AddAsync(category);
             await repo.SaveChangesAsync();
-            /* var order = new Order()
-             {
-                 Id = 1,
-                 FirstName = "TestFirstName",
-                 LastName = "TestLastName",
-                 PhoneNumber = "TestPhoneNumber",
-                 Address = "TestAddress",
-                 AdditionalInformation = "TestAddInfo",
-                 Date = System.DateTime.Now,
-                 UserId = "123"
-             };
-             await repo.AddAsync<Order>(order);
-             await repo.SaveChangesAsync();*/
         }
 
         [Test]
@@ -138,12 +125,6 @@ namespace OnlineShop.Test
             var service = serviceProvider.GetService<ICategoryService>();
             Assert.IsFalse(service.UpdateCategory(model).Result);
         }
-
-
-
-
-
-
 
         [TearDown]
         public void TearDown()

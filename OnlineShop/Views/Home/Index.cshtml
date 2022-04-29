@@ -11,6 +11,15 @@
 <div class="text-center">
     <h1 class="display-4">Available items</h1>
 </div>
+
+@using (Html.BeginForm())  
+{  
+    <p>  
+        Find by Item by Name: @Html.TextBox("SearchString")  
+        <input type="submit" value="Search" />  
+    </p>  
+}
+
  <div class="card table-responsive p-0">
                 <table id="customer">
                     <thead>
