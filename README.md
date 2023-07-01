@@ -16,7 +16,7 @@ OnlineShop is an ASP.NET project that serves as an online shop platform. It allo
 
 1. Clone the repository:
 
-git clone https://github.com/YourUsername/OnlineShop.git
+git clone https://github.com/Apollo7111/OnlineShop.git
 
 2. Set up the required database and configuration settings. Refer to the documentation for more details.
 
